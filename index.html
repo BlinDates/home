@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BlinDate - Real vibez only. Safe blind dates matched by real people. Find your perfect match with verified profiles and public meet-ups.">
+    <meta name="theme-color" content="#2563eb">
+    <title>BlinDate | Real Vibez Only - Safe Blind Dates</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #ec4899;
+            --dark-blue: #be123c;
+            --light-bg: #fdf2f8;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--light-bg);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Background */
+        .cloudy-bg {
+            background-color: var(--light-bg);
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(330,100%,95%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(320,100%,92%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(310,100%,90%,1) 0, transparent 50%),
+                radial-gradient(at 0% 100%, hsla(330,100%,95%,1) 0, transparent 50%),
+                radial-gradient(at 100% 100%, hsla(320,100%,92%,1) 0, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: -0.02em;
+            font-weight: 800;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #be123c 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Glass effect */
+        .glass-light {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+            transition: all 0.3s ease;
+        }
+
+        @media (hover: hover) {
+            .glass-light:hover {
+                transform: translateY(-5px);
+                background: rgba(255, 255, 255, 0.8);
+                border-color: var(--primary-blue);
+            }
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: var(--primary-blue);
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px -3px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.6);
+            color: var(--dark-blue);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: var(--primary-blue);
+        }
+
+        /* Cards */
+        .step-card {
+            border-bottom: 4px solid #e2e8f0;
+        }
+
+        .vibe-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+        }
+
+        .vibe-icon {
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.75rem;
+            color: white;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .vibe-icon {
+                width: 3.5rem;
+                height: 3.5rem;
+                font-size: 1.5rem;
+            }
+        }
+
+        .rule-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .rule-icon {
+            background: #eff6ff;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            color: var(--primary-blue);
+            flex-shrink: 0;
+            font-size: 1.125rem;
+        }
+
+        /* Responsive spacing */
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2.25rem;
+                line-height: 1.1;
+            }
+
+            .rule-item {
+                gap: 1rem;
+            }
+
+            .rule-icon {
+                padding: 0.75rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* Accessibility improvements */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Focus states for keyboard navigation */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--primary-blue);
+            outline-offset: 2px;
+        }
+
+        /* Inline Tailwind overrides for pink theme */
+        .text-pink-800 { color: #be123c; }
+        .bg-pink-500/10 { background-color: rgba(236, 72, 153, 0.1); }
+        .border-pink-200 { border-color: #fbcfe8; }
+        .text-pink-600 { color: #db2777; }
+        .hover\:bg-pink-100:hover { background-color: #fce7f3; }
+        .bg-pink-100/50 { background-color: rgba(252, 231, 243, 0.5); }
+    </style>
+</head>
+<body class="min-h-screen cloudy-bg">
+
+    <!-- Navigation -->
+    <nav class="p-4 md:p-6 flex justify-between items-center max-w-6xl mx-auto">
+        <div class="text-2xl md:text-3xl font-bold tracking-tighter text-blue-800 flex items-center gap-3">
+            <!-- Minimalist B & D Logo -->
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0">
+                <path d="M 10 12 L 10 36 L 20 36 Q 24 36 24 32 Q 24 28 20 28 Q 24 26 24 22 Q 24 18 20 18 L 10 18 Z" fill="none" stroke="#be123c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M 26 12 L 26 36 L 34 36 Q 40 36 40 24 Q 40 12 34 12 Z" fill="none" stroke="#ec4899" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>BlinDate<span class="text-blue-400">.</span></span>
+        </div>
+        <a href="#rules" class="text-xs md:text-sm font-semibold text-blue-700 bg-blue-100/50 hover:bg-blue-100 px-4 py-2 rounded-full transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500">
+            Sahi Rules
+        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="px-6 py-12 md:py-24 text-center max-w-4xl mx-auto">
+        <span class="inline-block px-3 py-1 mb-4 text-[10px] md:text-xs font-bold tracking-widest text-blue-600 uppercase bg-blue-500/10 rounded-full border border-blue-200">
+            Because your 'type' hasn't worked yet
+        </span>
+        <h1 class="hero-title text-5xl md:text-7xl font-bold mb-6 text-slate-900">
+            Find Your <span class="text-gradient">Perfect Match</span> Bina Kisi Bakwaas Ke.
+        </h1>
+        <p class="text-base md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto">
+            Safe vibes, real people, no cap. Let's get you off the screen and into a real conversation!
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="#signup" class="btn-primary w-full sm:w-auto px-10 py-4 rounded-2xl text-lg text-center">
+                Find A Date Now! <i class="fas fa-sparkles ml-2 text-sm" aria-hidden="true"></i>
+            </a>
+            <a href="#how" class="btn-secondary w-full sm:w-auto px-10 py-4 rounded-2xl text-lg text-center">
+                Process Kya Hai?
+            </a>
+        </div>
+    </header>
+
+    <!-- Personality Types Section -->
+    <section id="interests" class="px-6 py-12 max-w-6xl mx-auto">
+        <h2 class="text-center text-2xl md:text-3xl font-bold mb-3 text-slate-800">What's your vibe?</h2>
+        <p class="text-center text-sm md:text-base text-slate-500 mb-10">"Kaun ho tum? Kahan se aaye ho?" Choose your avatar.</p>
+        
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            <div class="glass-light p-5 md:p-8 rounded-[2rem] vibe-card">
+                <img src="./images/vibes/extrovert.png" alt="The Extrovert" class="w-12 h-12 md:w-14 md:h-14 mb-3 md:mb-4">
+                <h3 class="font-bold text-sm md:text-lg text-slate-800">The Extrovert</h3>
+                <p class="text-[10px] md:text-xs text-slate-500 mt-2">Basically Geet from Jab We Met vibes.</p>
+            </div>
+
+            <div class="glass-light p-5 md:p-8 rounded-[2rem] vibe-card">
+                <img src="./images/vibes/chill-soul.png" alt="The Chill Soul" class="w-12 h-12 md:w-14 md:h-14 mb-3 md:mb-4">
+                <h3 class="font-bold text-sm md:text-lg text-slate-800">The Chill Soul</h3>
+                <p class="text-[10px] md:text-xs text-slate-500 mt-2">Vibing like Ranbir in Wake Up Sid.</p>
+            </div>
+
+            <div class="glass-light p-5 md:p-8 rounded-[2rem] vibe-card">
+                <img src="./images/vibes/explorer.png" alt="The Explorer" class="w-12 h-12 md:w-14 md:h-14 mb-3 md:mb-4">
+                <h3 class="font-bold text-sm md:text-lg text-slate-800">The Explorer</h3>
+                <p class="text-[10px] md:text-xs text-slate-500 mt-2">"Bunnies" who want to fly & run.</p>
+            </div>
+
+            <div class="glass-light p-5 md:p-8 rounded-[2rem] vibe-card">
+                <img src="./images/vibes/intellectual.png" alt="Intellectual" class="w-12 h-12 md:w-14 md:h-14 mb-3 md:mb-4">
+                <h3 class="font-bold text-sm md:text-lg text-slate-800">Intellectual</h3>
+                <p class="text-[10px] md:text-xs text-slate-500 mt-2">Deep talk energy like Naina Talwar.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps Section -->
+    <section id="how" class="px-6 py-16 bg-white/30">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900">Scene Kya Hai?</h2>
+                <p class="text-slate-600">3 simple steps to find your next favorite person.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+                <div class="glass-light p-8 rounded-3xl step-card">
+                    <span class="text-3xl md:text-4xl font-bold text-blue-200 mb-4 block">01</span>
+                    <h3 class="text-xl md:text-2xl font-bold mb-3 text-slate-800">Form Bharo</h3>
+                    <p class="text-sm md:text-base text-slate-600">Fill out our quick form. Tell us about your vibe and what you're looking for.</p>
+                </div>
+                <div class="glass-light p-8 rounded-3xl step-card">
+                    <span class="text-3xl md:text-4xl font-bold text-blue-200 mb-4 block">02</span>
+                    <h3 class="text-xl md:text-2xl font-bold mb-3 text-slate-800">Verification</h3>
+                    <p class="text-sm md:text-base text-slate-600">We manually check every profile to keep the community genuine and safe.</p>
+                </div>
+                <div class="glass-light p-8 rounded-3xl step-card">
+                    <span class="text-3xl md:text-4xl font-bold text-blue-200 mb-4 block">03</span>
+                    <h3 class="text-xl md:text-2xl font-bold mb-3 text-slate-800">Blind Date</h3>
+                    <p class="text-sm md:text-base text-slate-600">Our team finds your match and sets up a meet at a safe public spot. Easy!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rules Section -->
+    <section id="rules" class="px-6 py-16 max-w-4xl mx-auto">
+        <div class="bg-white/80 backdrop-blur-md p-8 md:p-16 rounded-[2.5rem] shadow-xl border border-blue-100">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center text-blue-900">
+                <i class="fas fa-heart-circle-check mr-2 text-blue-500" aria-hidden="true"></i>Sahi Rules (Sunlo Guys)
+            </h2>
+            <div class="space-y-6 md:space-y-8">
+                <div class="rule-item">
+                    <div>
+                        <h4 class="text-lg font-bold mb-1 text-slate-800">Public Meets Only</h4>
+                        <p class="text-xs md:text-sm text-slate-600">Safety first. Every first meeting happens in busy public places like cafes or parks.</p>
+                    </div>
+                </div>
+                <div class="rule-item">
+                    <div>
+                        <h4 class="text-lg font-bold mb-1 text-slate-800">Privacy Rakho</h4>
+                        <p class="text-xs md:text-sm text-slate-600">Don't share private details like your home address right away. Trust takes time.</p>
+                    </div>
+                </div>
+                <div class="rule-item">
+                    <div>
+                        <h4 class="text-lg font-bold mb-1 text-slate-800">Be Kind Always</h4>
+                        <p class="text-xs md:text-sm text-slate-600">Respect everyone. Zero tolerance for bullying or any bad behavior.</p>
+                    </div>
+                </div>
+                <div class="rule-item">
+                    <div>
+                        <h4 class="text-lg font-bold mb-1 text-slate-800">Age & Consent</h4>
+                        <p class="text-xs md:text-sm text-slate-600">Recommended age for registration is 13+. All users must follow local laws and provide valid consent. We take underage protection seriously.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Footer -->
+    <section id="signup" class="px-6 py-16 max-w-4xl mx-auto text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6 text-slate-800">Ready to find your match?</h2>
+        <a href="#contact" class="btn-primary px-10 py-4 rounded-2xl text-lg inline-block mb-10">
+            Sign Up Now
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 text-center px-6 border-t border-blue-200/50">
+        <p class="text-slate-400 text-[10px] md:text-xs">
+            &copy; 2026 BlinDate Pune. By team ASStech. • <a href="#privacy" class="hover:text-slate-500 transition">Privacy Policy</a>
+        </p>
+    </footer>
+    <!-- Instagram Button -->
+    <a href="https://instagram.com/yourinstagram" target="_blank" class="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all z-50" title="Follow us on Instagram">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <circle cx="17.5" cy="6.5" r="1.5"></circle>
+        </svg>
+    </a>
+
+</body>
+</html>
